@@ -1,0 +1,37 @@
+<div class="contenedor">
+  <mat-card>
+    <form [formGroup]="formCalculator" (ngSubmit)="executeOperation()">
+      <div class="inputs">
+        <div class="opcion">
+          <mat-form-field appearance="outline">
+            <mat-label>Seleccione una opción</mat-label>
+            <mat-select formControlName="operacion">
+              <mat-option *ngFor="let operation of arrayOperations" [value]="operation.value">
+                {{operation.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="opcion">
+          <mat-form-field appearance="outline">
+            <mat-label>Cantidad 1</mat-label>
+            <input matInput formControlName="numeroUno" placeholder="Ingrese un valor númerico">
+          </mat-form-field>
+        </div>
+        <div class="opcion">
+          <mat-form-field appearance="outline">
+            <mat-label>Cantidad 2</mat-label>
+            <input matInput formControlName="numeroDos" placeholder="Ingrese un valor númerico">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="button">
+        <button mat-raised-button type="button" (click)="clearForm()" color="warn">Limpiar</button>
+        <button mat-raised-button type="submit" color="primary">Calcular</button>
+      </div>
+    </form>
+    <div class="total">
+      {{resultOperation}}
+    </div>
+  </mat-card>
+</div>
